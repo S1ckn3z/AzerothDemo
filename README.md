@@ -1,4 +1,4 @@
-# AzerothAuctions — Teaser Site
+# Azeroth Auctions — Teaser Site
 
 Single-page teaser served while the main project is under construction.
 Static: vanilla HTML / CSS / JS, no build step.
