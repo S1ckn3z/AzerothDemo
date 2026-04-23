@@ -13,6 +13,12 @@
   --glass-inner: rgba(201, 169, 97, 0.08);
 }
 
+@property --glow-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 *,
 *::before,
 *::after {
@@ -107,6 +113,29 @@ canvas#orb {
   mask-composite: exclude;
   pointer-events: none;
   opacity: 0.65;
+}
+
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--glow-angle, 0deg),
+    transparent 0deg,
+    rgba(255, 217, 138, 0.55) 14deg,
+    rgba(79, 195, 247, 0.35) 42deg,
+    transparent 90deg 360deg
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.9;
+  animation: glow-orbit 11s linear infinite;
 }
 
 .eyebrow {
@@ -204,6 +233,20 @@ canvas#orb {
     text-shadow:
       0 0 44px rgba(79, 195, 247, 0.32),
       0 0 22px rgba(201, 169, 97, 0.18);
+  }
+}
+
+.subtext[data-rotating] {
+  transition: opacity 0.7s ease;
+}
+
+.subtext[data-rotating].is-fading {
+  opacity: 0;
+}
+
+@keyframes glow-orbit {
+  to {
+    --glow-angle: 360deg;
   }
 }
 

@@ -251,3 +251,40 @@
     start();
   }
 })();
+
+(() => {
+  "use strict";
+
+  const el = document.querySelector(".subtext[data-rotating]");
+  if (!el) return;
+
+  const quotes = [
+    "Something is being reforged in the depths of Azeroth.<br />Return when the anvils have cooled.",
+    "Deep in the forge, embers still whisper.<br />The market shall rise.",
+    "Coin shall flow like molten gold.<br />Patience, traveller.",
+    "The hammer has not yet fallen.<br />Stand ready.",
+    "Runes are being etched into the ledger.<br />Soon, you shall bid again.",
+    "From the ashes of old markets, a new economy stirs.<br />The gavel sleeps.",
+    "The auctioneer sharpens his voice in silence.<br />Listen for the call.",
+    "Steel and gold are being weighed in the dark.<br />Return at dusk.",
+    "Old contracts burn. New ones are being forged.<br />The market remembers.",
+    "The gates of the market remain sealed.<br />For now."
+  ];
+
+  let idx = Math.floor(Math.random() * quotes.length);
+  el.innerHTML = quotes[idx];
+
+  const prefersReducedMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion) return;
+
+  setInterval(() => {
+    el.classList.add("is-fading");
+    setTimeout(() => {
+      idx = (idx + 1) % quotes.length;
+      el.innerHTML = quotes[idx];
+      el.classList.remove("is-fading");
+    }, 700);
+  }, 9000);
+})();
