@@ -209,6 +209,107 @@ canvas#orb {
   line-height: 1.75;
 }
 
+.alpha-cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 2.25rem 0 0;
+  padding: 0.7rem 1.15rem 0.7rem 0.85rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    rgba(79, 195, 247, 0.12),
+    rgba(201, 169, 97, 0.08)
+  );
+  border: 1px solid rgba(79, 195, 247, 0.35);
+  color: var(--text);
+  text-decoration: none;
+  font-family: "Geist", system-ui, sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 10px 30px -18px rgba(79, 195, 247, 0.55);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.1, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+.alpha-cta:hover,
+.alpha-cta:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(255, 217, 138, 0.55);
+  background: linear-gradient(
+    135deg,
+    rgba(79, 195, 247, 0.18),
+    rgba(201, 169, 97, 0.16)
+  );
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+    0 14px 38px -16px rgba(255, 217, 138, 0.45);
+  outline: none;
+}
+
+.alpha-cta__pulse {
+  position: relative;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--cyan-bright);
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.7);
+}
+
+.alpha-cta__pulse::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 229, 255, 0.55);
+  animation: alphaPulse 1.8s ease-out infinite;
+}
+
+.alpha-cta__badge {
+  font-family: "Cinzel", "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(201, 169, 97, 0.14);
+  border: 1px solid rgba(201, 169, 97, 0.35);
+}
+
+.alpha-cta__label {
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.alpha-cta__arrow {
+  color: var(--cyan-bright);
+  transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+.alpha-cta:hover .alpha-cta__arrow,
+.alpha-cta:focus-visible .alpha-cta__arrow {
+  transform: translateX(3px);
+}
+
+@keyframes alphaPulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
 @keyframes cardRise {
   from {
     opacity: 0;
@@ -261,6 +362,16 @@ canvas#orb {
   }
   .subtext {
     font-size: 0.92rem;
+  }
+  .alpha-cta {
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 0.78rem;
+    padding: 0.6rem 1rem 0.6rem 0.75rem;
+  }
+  .alpha-cta__badge {
+    font-size: 0.64rem;
+    letter-spacing: 0.24em;
   }
 }
 
